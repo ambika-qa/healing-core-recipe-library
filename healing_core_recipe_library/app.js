@@ -1,6 +1,6 @@
 // Public recipe reader for Healing Core. Publishable keys are designed for browser use.
 const SUPABASE_URL = 'https://obfivpchpetkeibocflf.supabase.co';
-const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_h-It4wWp-nVF8zcTaSt0Fw_zHhNn';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_h-It4wWp-nVF8zcTaSt0Fw_zHhNnTqn';
 const REST_URL = `${SUPABASE_URL}/rest/v1/recipes?select=*&published=eq.true&order=created_at.desc`;
 const categoryNames = ['All Recipes','Breakfast & Smoothies','One-Pot Meals','Plant-Based Protein','Gut-Friendly','Satvic','Snacks & Light Meals','Guilt-Free Treats','Desserts & Baking','Drinks','Weight Management'];
 let recipes = [];
