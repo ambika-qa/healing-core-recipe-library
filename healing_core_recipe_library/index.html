@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f3eb">
+  <title>Healing Core | Recipe Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Healing Core home">
+      <span class="brand-mark">HC</span>
+      <span><strong>Healing Core</strong><small>FOOD • NOURISH • THRIVE</small></span>
+    </a>
+    <span class="header-note">Your everyday recipe library</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">SIMPLE FOOD, THOUGHTFULLY MADE</p>
+        <h1>Find your next<br><em>feel-good meal.</em></h1>
+        <p class="hero-text">A growing collection of nourishing, plant-forward recipes for everyday life.</p>
+        <a class="hero-link" href="#library">Explore recipes <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-art" role="img" aria-label="Illustrated bowl of nourishing vegetables">
+        <div class="sun"></div><div class="leaf leaf-one"></div><div class="leaf leaf-two"></div>
+        <div class="plate"><div class="food food-one"></div><div class="food food-two"></div><div class="food food-three"></div><div class="food food-four"></div><div class="food food-five"></div><div class="food food-six"></div><div class="food food-seven"></div></div>
+        <span class="art-caption">Made with care, shared with love.</span>
+      </div>
+    </section>
+
+    <section id="library" class="library-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE RECIPE COLLECTION</p><h2>What sounds good today?</h2></div>
+        <span id="recipe-count" class="recipe-count">Loading recipes…</span>
+      </div>
+      <label class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="search" type="search" placeholder="Search recipes or ingredients…" autocomplete="off">
+        <kbd>⌘ K</kbd>
+      </label>
+      <div id="categories" class="categories" aria-label="Filter by category"></div>
+      <div id="recipe-grid" class="recipe-grid" aria-live="polite"></div>
+      <div id="empty-state" class="empty-state" hidden>
+        <span>🥣</span><h3>No recipes found just yet</h3><p>Try another search or choose a different category.</p>
+        <button id="clear-filters" class="button button-outline">Clear filters</button>
+      </div>
+    </section>
+
+    <section class="note-strip">
+      <span class="note-icon">✳</span>
+      <p><strong>A gentle reminder</strong><br>Recipes are for inspiration. Ingredient tolerance is individual, especially for people with digestive conditions.</p>
+    </section>
+  </main>
+
+  <footer><a class="footer-brand" href="#">Healing Core</a><span>Thoughtful recipes for real life.</span><span>© <span id="year"></span> Healing Core</span></footer>
+
+  <dialog id="recipe-dialog" class="recipe-dialog">
+    <button id="close-dialog" class="dialog-close" aria-label="Close recipe">×</button>
+    <div id="dialog-content"></div>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
