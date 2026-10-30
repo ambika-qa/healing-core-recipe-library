@@ -2,7 +2,20 @@
 const SUPABASE_URL = 'https://obfivpchpetkeibocflf.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_h-It4wWp-nVF8zcTaSt0Fw_zHhNnTqn';
 const REST_URL = `${SUPABASE_URL}/rest/v1/recipes?select=*&published=eq.true&order=created_at.desc`;
-const categoryNames = ['All Recipes','Breakfast & Smoothies','One-Pot Meals','Plant-Based Protein','Gut-Friendly','Satvic','Snacks & Light Meals','Guilt-Free Treats','Desserts & Baking','Drinks','Weight Management'];
+const categoryNames = [
+  'All Recipes',
+  'Breakfast',
+  'Smoothies & Bowls',
+  'One-Pot Meals',
+  'Protein Rich Meals',
+  'Gut-Friendly Meals',
+  'Healing Recipes',
+  'Weight-Loss Meals',
+  'Desserts & Treats',
+  'Snacks',
+  'Lunch & Dinner',
+  'Light Meals'
+];
 let recipes = [];
 let selectedCategory = 'All Recipes';
 const grid = document.getElementById('recipe-grid');
