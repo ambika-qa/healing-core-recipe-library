@@ -18,6 +18,8 @@ button{background:#526b56;color:white;border:0;cursor:pointer}
 .recipe{padding:12px 0;border-bottom:1px solid #eee}
 small{color:#6c786e}
 #message{white-space:pre-wrap;color:#526b56}
+#categories{min-height:190px;background:#fff}
+.hint{font-size:13px;color:#6c786e;margin-top:0}
 </style>
 </head>
 <body>
@@ -39,7 +41,23 @@ small{color:#6c786e}
 <form id="recipeForm">
 <input id="name" placeholder="Recipe name" required>
 <textarea id="description" placeholder="Short description"></textarea>
-<input id="categories" placeholder="Categories, separated by commas">
+
+<label for="categories"><strong>Select recipe categories</strong></label>
+<select id="categories" multiple>
+<option>Breakfast</option>
+<option>Smoothies &amp; Bowls</option>
+<option>One-Pot Meals</option>
+<option>Protein Rich Meals</option>
+<option>Gut-Friendly Meals</option>
+<option>Healing Recipes</option>
+<option>Weight-Loss Meals</option>
+<option>Desserts &amp; Treats</option>
+<option>Snacks</option>
+<option>Lunch &amp; Dinner</option>
+<option>Light Meals</option>
+</select>
+<p class="hint">Select multiple categories using Ctrl (Windows) or Command (Mac) while clicking.</p>
+
 <textarea id="ingredients" placeholder="Ingredients — one per line" required></textarea>
 <textarea id="steps" placeholder="Preparation steps — one per line" required></textarea>
 <input id="prep" type="number" min="0" placeholder="Preparation time in minutes">
@@ -63,7 +81,7 @@ import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2
 
 const supabase=createClient(
 'https://obfivpchpetkeibocflf.supabase.co',
-'sb_publishable_h-It4wWp-nVF8zcTaSt0Fw_zHhNnTqn'
+'sb_publishable_h-It4wWp-nVF8zcTaSt0Fw_zHhNn'
 );
 
 const adminId='8ff3fbca-4bd8-49d3-a3d2-35434fd56304';
@@ -118,21 +136,24 @@ async function loadRecipes(){
 $('recipeForm').addEventListener('submit',async(event)=>{
   event.preventDefault();
   $('message').textContent='Saving recipe...';
+
   const {data:{user}}=await supabase.auth.getUser();
   if(!user || user.id!==adminId){
     $('message').textContent='Please log in again.';
     return;
   }
+
   const recipe={
     name:$('name').value.trim(),
     description:$('description').value.trim(),
-    categories:$('categories').value.split(',').map(x=>x.trim()).filter(Boolean),
+    categories:Array.from($('categories').selectedOptions).map(option=>option.value),
     ingredients:$('ingredients').value.split('\n').map(x=>x.trim()).filter(Boolean),
     steps:$('steps').value.split('\n').map(x=>x.trim()).filter(Boolean),
     prep_minutes:$('prep').value?Number($('prep').value):null,
     image_url:$('image').value.trim()||null,
     published:$('published').checked
   };
+
   const {error}=await supabase.from('recipes').insert(recipe);
   if(error){$('message').textContent='Could not save: '+error.message;return;}
   $('message').textContent='Recipe saved successfully!';
